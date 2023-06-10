@@ -32,7 +32,6 @@ function App() {
           <Outlet />
         </div>
       </div>
-
       <Routes>
         <Route path="/" element={<RecordatorioList />} />
         <Route path="/nuevo" element={<RecordatorioForm />} />
