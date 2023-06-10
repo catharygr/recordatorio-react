@@ -1,53 +1,58 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
-import firebase from "firebase/app";
-import "firebase/firestore";
+import React from "react";
 
 export default function ReminderForm() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const history = useHistory();
+  const [recordatorio, setRecordatorio] = React.useState({
+    titulo: "",
+    fecha: "",
+    hora: "",
+  });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const reminder = {
-        title,
-        description,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      };
+  function manejarCrear(evento) {
+    const { titulo, fecha, hora } = evento.target;
+    evento.preventDefault();
+    setRecordatorio({
+      titulo: titulo.value,
+      fecha: fecha.value,
+      hora: hora.value,
+    });
+  }
 
-      // Guardar el recordatorio en Firebase Firestore
-      await firebase.firestore().collection("reminders").add(reminder);
+  function manejarCancelar(evento) {
+    evento.preventDefault();
+    setRecordatorio({
+      titulo: "",
+      fecha: "",
+      hora: "",
+    });
+  }
 
-      // Redireccionar al componente de lista de recordatorios
-      history.push("/reminders");
-    } catch (error) {
-      console.error("Error al guardar el recordatorio:", error);
-    }
-  };
+const mapeo = Object.keys(recordatorio).map((key) => {
+  return (
+    <div key={key}>
+      <p>{key}</p>
+      <p>{recordatorio[key]}</p>
+    </div>
+  );
+}
+
 
   return (
-    <div>
-      <h2>Agregar Recordatorio</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Título:</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <label htmlFor="description">Descripción:</label>
-        <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-
-        <button type="submit">Guardar</button>
-      </form>
-    </div>
+    <form>
+      <div className="container">
+        <label htmlFor="titulo">Titulo</label>
+        <input type="text" id="titulo" name="titulo" />
+        <label htmlFor="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha" />
+        <label htmlFor="hora">Hora</label>
+        <input type="time" id="hora" name="hora" />
+        <button onClick={manejarCrear} type="submit">
+          Crear
+        </button>
+        <button onClick={manejarCancelar} type="reset">
+          Cancelar
+        </button>
+        {mapeo}
+      </div>
+    </form>
   );
 }

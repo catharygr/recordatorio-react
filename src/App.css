@@ -121,16 +121,11 @@ display:revert; revert to element instead of attribute */
   --border-radius: 5px;
 }
 
-/* Letras */
-.listas-titulos {
-  text-align: center;
-  font-size: 0.8rem;
-  padding: 0.5rem;
-}
+/* Estilos generales */
 
 /* Estilos básicos */
 body {
-  background-color: beige;
+  background-color: var(--fondo-base);
   color: var(--color);
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
     helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial,
@@ -140,43 +135,12 @@ input::placeholder {
   opacity: 30%;
 }
 
-/* ReminderForm.css */
+/* Estilos de la app */
 .container {
   max-width: 400px;
   margin: 0 auto;
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  font-weight: bold;
-}
-
-input,
-textarea {
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0069d9;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  background-color: var(--fondo-contraste);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }

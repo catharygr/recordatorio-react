@@ -1,16 +1,17 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./app.css";
-import "firebase/firestore";
+import { BrowserRouter, Route, Router } from "react-router-dom";
 import ReminderForm from "./componentes/ReminderForm";
 import ReminderList from "./componentes/ReminderList";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<ReminderForm />} />
-        <Route path="/reminders" element={<ReminderList />} />
-      </Routes>
+      <Router>
+        <Route path="/recordatorio">
+          <ReminderForm />
+          <ReminderList />
+        </Route>
+      </Router>
     </BrowserRouter>
   );
 }

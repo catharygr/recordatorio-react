@@ -5,27 +5,20 @@ import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// Configuracion de Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyBUXXCNmm_-Ncck5V6_QnlFxamI6Hqo1Yo",
-  authDomain: "recordatorios-app-cathy.firebaseapp.com",
-  databaseURL:
-    "https://recordatorios-app-cathy-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "recordatorios-app-cathy",
-  storageBucket: "recordatorios-app-cathy.appspot.com",
-  messagingSenderId: "665624685235",
-  appId: "1:665624685235:web:ac29399baa48ac0c0a1ec6",
+  apiKey: "AIzaSyB-5Z6X6Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3Z3",
+  authDomain: "recordatorio-react.firebaseapp.com",
+  databaseURL: "https://recordatorio-react-default-rtdb.firebaseio.com",
+  projectId: "recordatorio-react",
+  storageBucket: "recordatorio-react.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:123456789",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const storage = getStorage(app);
 
-// Inicializar data base
-export const db = getDatabase(app);
-// Referencias de listas en Database
-export const listasEnDB = refDb(db, "listas");
-export const usuariosEnDB = refDb(db, "usuarios");
-export const recordatorioEnDB = refDb(db, "recordatorio");
-
-// Inicializar Storage
-export const storage = getStorage(app);
+export { db, storage };
