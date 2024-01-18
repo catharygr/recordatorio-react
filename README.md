@@ -34,4 +34,5 @@ React Router que proporciona una función de navegación para
 cambiar la URL programáticamente en lugar de utilizar enlaces
 tradicionales.
                             
-https://recordatorios-react-cathy.netlify.app/loguear
+https://recordatorios-react-cathy.netlify.app
+
